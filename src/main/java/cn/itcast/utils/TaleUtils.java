@@ -1,6 +1,7 @@
 package cn.itcast.utils;
 
 import cn.itcast.constant.WebConst;
+import cn.itcast.controller.admin.AttAchController;
 import cn.itcast.exception.BusinessException;
 
 import org.apache.commons.lang3.StringUtils;
@@ -394,7 +395,7 @@ public class TaleUtils {
      *
      * @return
      */
-   /* public static String getUplodFilePath() {
+    public static String getUplodFilePath() {
         String path = TaleUtils.class.getProtectionDomain().getCodeSource().getLocation().getPath();
         path = path.substring(1, path.length());
         try {
@@ -427,5 +428,5 @@ public class TaleUtils {
             }
             return prefix + "/" + UUID.UU32() + "." + (ext == null ? null : (ext));
         }
-    }*/
+    }
 }
