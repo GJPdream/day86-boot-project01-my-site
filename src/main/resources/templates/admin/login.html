@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="pic=${commons.random(5, '.png')}" th:style="'background:url(/admin/images/bg/'+@{${pic}}+');no-repeat; background-size: cover;'">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="pic=${T(cn.itcast.utils.Commons).random(5, '.png')}" th:style="'background:url(/admin/images/bg/'+@{${pic}}+');no-repeat; background-size: cover;'">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -58,7 +58,7 @@
             <h3 class="text-center m-t-10"> Login My Site</h3>
         </div>
         <div class="panel-body">
-            <form class="form-horizontal m-t-20" method="post" id="loginForm" onsubmit="return checkForm()">
+            <form class="form-horizontal m-t-20" method="post" id="loginForm" th:action="@{/login}" th:method="post"><!-- onsubmit="return checkForm()"-->
                 <div class="form-group">
                     <div class="col-xs-12">
                         <input class=" input-lg input-border" name="username" type="text" required=""
@@ -96,14 +96,14 @@
 <script th:src="@{/admin/js/base.js}"></script>
 <script type="text/javascript">
     /*<![CDATA[*/
-    var tale = new $.tale();
+  /*  var tale = new $.tale();
     function checkForm() {
         tale.post({
-            url: '/admin/login',
+            url: '/login',
             data: $("#loginForm").serialize(),
             success: function (result) {
                 if (result && result.code == 'success') {
-                    /*当地跳转*/
+                    /!*当地跳转*!/
                     window.location.href = '/admin/index';
                 } else {
                     tale.alertError(result.msg || '登录失败');
@@ -111,7 +111,7 @@
             }
         });
         return false;
-    }
+    }*/
     /*]]>*/
 </script>
 </body>
