@@ -6,6 +6,13 @@
     </sql>
 
     <sql id="BASE_COLUMN">
-        uid,username,password,email,homeUrl,screenName,created,activated,logged,groupName
+        uid,username,password,email,homeUrl,screenName,created,activated,logged,groupName,premise
     </sql>
+
+    <select id="findByUser" parameterType="String" resultType="cn.itcast.dto.cond.UserCond">
+        select <include refid="BASE_COLUMN"/>
+        from <include refid="BASE_TABLE"/>
+        where
+        username=#{username,jdbcType=VARCHAR}
+    </select>
 </mapper>

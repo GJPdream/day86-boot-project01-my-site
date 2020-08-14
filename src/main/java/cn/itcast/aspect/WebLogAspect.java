@@ -31,10 +31,13 @@ public class WebLogAspect {
 
     ThreadLocal<Long> startTime = new ThreadLocal<>();
 
+/*
     @Pointcut("execution(public * cn.luischen.controller..*.*(..))")
     public void webLog(){}
+*/
 
 
+/*
     @Before("webLog()")
     public void doBefore(JoinPoint joinPoint){
 
@@ -59,5 +62,6 @@ public class WebLogAspect {
         LOGGER.info("SPEND TIME : " + (System.currentTimeMillis() - startTime.get()));
         startTime.remove();//用完之后记得清除，不然可能导致内存泄露;
     }
+*/
 
 }
