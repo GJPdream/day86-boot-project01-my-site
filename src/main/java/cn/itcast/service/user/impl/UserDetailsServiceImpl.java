@@ -29,9 +29,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         else {
             ArrayList<GrantedAuthority> authorities  = new ArrayList<>();
-            authorities.add(new SimpleGrantedAuthority(byUser.getPremise()));
-           /* authorities.add(new SimpleGrantedAuthority("USER"));*/
-            User user = new User(byUser.getUsername(), new BCryptPasswordEncoder().encode(byUser.getPassword()), authorities);
+            authorities.add(new SimpleGrantedAuthority("USER"));/*byUser.getPremise()*/
+          /*  authorities.add(new GrantedAuthority() {
+                @Override
+                public String getAuthority() {
+                    return "USER";
+                }
+            });*/
+            User user = new User(byUser.getUsername(), new BCryptPasswordEncoder().encode(byUser.getPassword()), true,true,true,true,authorities);
             System.out.println("管理员信息："+user.getUsername()+"   "+passwordEncoder.encode(byUser.getPassword())+"  "+user.getAuthorities());
             return user;
         }

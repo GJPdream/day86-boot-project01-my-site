@@ -52,7 +52,10 @@
                                                                                          aria-hidden="true"></i>
                                 查看网站</a></li>
                             <li><a th:href="@{/admin/profile}"><i class="fa fa-sun-o"></i> 个人设置</a></li>
-                            <li><a th:href="@{/admin/logout}"><i class="fa fa-sign-out"></i> 注销</a></li>
+                         <!--th:action="@{/logout} " th:method="post" -->
+                                <li><a th:href="@{/logout}"><i class="fa fa-sign-out"></i> 注销</a></li>
+
+
                         </ul>
                     </li>
                 </ul>
@@ -118,4 +121,23 @@
     </div>
 </div>
 </div>
+<!--<form id="re">&lt;!&ndash;th:action="@{/login}" th:method="post" &ndash;&gt;
+    <li><a  id="loginout">&lt;!&ndash;th:href="@{/login}"&ndash;&gt;<i class="fa fa-sign-out"></i> 注销</a></li>
+</form>-->
+<!--<script type="text/javascript">
+    $(function() {
+        $("#loginout").onclick(function () {
+          $.ajax({
+              type:"post",
+              url:"/logout",
+             /* data: $("#loginForm").serialize(),*/
+              data:$("#remember").serialize(),
+              success:function(data){
+
+              }
+          })
+        })
+
+    });
+</script>-->
 </html>
