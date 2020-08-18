@@ -33,17 +33,19 @@ UserDetailsServiceImpl userDetailsService;
         http.authorizeRequests().antMatchers("/toLogin","/admin/css/**","/admin/images/**")
                 .permitAll()
                /*前面需添加一个方法才能实行这个东西*/
-          /*      .antMatchers("admin/article/publish").hasRole("USER")
-                .antMatchers("comm/**").hasRole("ADMIN")
-                .antMatchers("site/**").hasRole("ADMIN")*/
+                .antMatchers("/admin/**").hasAnyAuthority("USER")
+                .antMatchers("/comm/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/site/**").hasAnyAuthority("ADMIN")
                /* 都这个其实就是所有的请求必须进行验证*/
                  .anyRequest()
                  .authenticated()
+                .and()
+                .rememberMe().rememberMeParameter("remeber_me").tokenValiditySeconds(6000*20).rememberMeCookieName("cookie")
                 .and().csrf().disable();// 关闭csrf处理;
               http.formLogin().usernameParameter("username")
            .passwordParameter("password").loginPage("/toLogin").loginProcessingUrl("/login").successForwardUrl("/success/login");
              /* 记住我功能、cookie没有效果*/
-        http.rememberMe().rememberMeParameter("remeber_me").tokenValiditySeconds(6000*20).rememberMeCookieName("cookie1");
+/*      http.rememberMe().rememberMeParameter("remeber_me").tokenValiditySeconds(6000*20).rememberMeCookieName("cookie1");*/
             http.logout().logoutSuccessUrl("/toLogin");
 
     }
